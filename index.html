@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Game</title>
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz Game</h1>
+    <div id="question-container">
+      <p id="question">Loading...</p>
+      <div id="answers"></div>
+    </div>
+    <div class="info">
+      <p>Score: <span id="score">0</span></p>
+      <p>Time: <span id="timer">15</span>s</p>
+    </div>
+    <button id="next-btn">Next</button>
+    
+    <!-- End Screen -->
+    <div id="end-screen" style="display:none;">
+      <h2>Quiz Finished!</h2>
+      <p>Your final score: <span id="final-score"></span></p>
+      <button onclick="location.reload()">Restart</button>
+    </div>
+    
+    <!-- Startup Modal -->
+    <div id="start-modal">
+      <div class="modal-content">
+        <h2>Welcome to Alex Quiz Game!</h2>
+        <p>Get ready to test your knowledge. Click start when you're ready!</p>
+        <button onclick="startGame()">Start Quiz</button>
+      </div>
+    </div>
+
+    <audio id="bg-music" src="quiz-countdown-337785.mp3" autoplay loop></audio>
+    <audio id="correct-sound" src="correct.mp3"></audio>
+    <audio id="wrong-sound" src="wrong.mp3"></audio>
+    <audio id="complete-sound" src="complete.mp3"></audio>
+  </div>
+  <script src="quiz.js"></script>
+</body>
+</html>

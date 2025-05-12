@@ -1,0 +1,52 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Admin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .message {
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Admin - Quiz Scores</h1>
+    <div id="scores-list"></div>
+
+    <button id="clear-btn">Clear Scores</button>
+    <button onclick="window.location.href='index.html'">Back to Quiz</button>
+    <p id="admin-msg" class="message"></p>
+  </div>
+
+  <script>
+    const container = document.getElementById("scores-list");
+    const message = document.getElementById("admin-msg");
+
+    function loadScores() {
+      const scores = JSON.parse(localStorage.getItem("quizScores")) || [];
+      if (scores.length === 0) {
+        container.innerHTML = "<p>No scores saved yet.</p>";
+        return;
+      }
+      container.innerHTML = "<ul>" +
+        scores.map(s => `<li>${s.date}: ${s.score}</li>`).join("") +
+        "</ul>";
+    }
+
+    function clearScores() {
+      localStorage.removeItem("quizScores");
+      container.innerHTML = "<p>No scores saved yet.</p>";
+      message.textContent = "Scores successfully cleared!";
+    }
+
+    document.getElementById("clear-btn").addEventListener("click", clearScores);
+
+    loadScores();
+  </script>
+</body>
+</html>
